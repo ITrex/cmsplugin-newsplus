@@ -1,0 +1,2 @@
+cmsplguin-newsplus
+==================
