@@ -41,10 +41,16 @@ class ArchiveIndexView(PublishedNewsMixin, generic_views.ListView):
             context['date_list'] = date_list
         return context
 
+    def post(self, *args, **kwargs):
+        return self.get(*args, **kwargs)
+
 
 class DetailView(PublishedNewsMixin, generic_views.DateDetailView):
     month_format = '%m'
     date_field = 'pub_date'
+
+    def post(self, *args, **kwargs):
+        return self.get(*args, **kwargs)
 
 
 class MonthArchiveView(PublishedNewsMixin, generic_views.MonthArchiveView):
