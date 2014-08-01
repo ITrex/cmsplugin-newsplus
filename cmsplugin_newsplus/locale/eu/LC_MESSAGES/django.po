@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-08 22:16+0200\n"
+"POT-Creation-Date: 2014-07-26 10:48-0500\n"
 "PO-Revision-Date: 2012-08-08 22:24+0200\n"
 "Last-Translator: Ales Zabala Alava (Shagi) <shagi@gisa-elkartea.org>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -17,25 +17,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: admin.py:37
+#: admin.py:42
 #, python-format
 msgid "%(count)d newsitem was published"
 msgid_plural "%(count)d newsitems were published"
 msgstr[0] "Berri %(count)d bat argitaratu da"
 msgstr[1] "%(count)d berri argitaratu dira"
 
-#: admin.py:40
+#: admin.py:45
 msgid "Publish selected news"
 msgstr "Hautatutako berriak argitaratu"
 
-#: admin.py:47
+#: admin.py:53
 #, python-format
 msgid "%(count)d newsitem was unpublished"
 msgid_plural "%(count)d newsitems were unpublished"
 msgstr[0] "Berri %(count)d ez-argitaratu da"
 msgstr[1] "%(count)d berri ez-argitaratu dira"
 
-#: admin.py:50
+#: admin.py:56
 msgid "Unpublish selected news"
 msgstr "Hautatutako berriak ez-argitaratu"
 
@@ -51,66 +51,82 @@ msgstr "Azken berriak"
 msgid "News menu"
 msgstr "Berriak menua"
 
-#: models.py:27
-msgid "Title"
+#: models.py:29
+#, fuzzy
+msgid "title"
 msgstr "Izenburua"
 
-#: models.py:28
-msgid "Slug"
-msgstr "Slug"
-
-#: models.py:29
-msgid ""
-"A slug is a short name which uniquely identifies the news item for this day"
-msgstr "Slug-a berria egun honetarako esklusiboki identifikatzen duen izen laburra da"
-
 #: models.py:30
-msgid "Excerpt"
-msgstr "Zatia"
+msgid "slug"
+msgstr ""
 
 #: models.py:31
-msgid "Content"
-msgstr "Edukia"
-
-#: models.py:33
-msgid "Published"
-msgstr "Argitaratuta"
+msgid ""
+"A slug is a short name which uniquely identifies the news item for this day"
+msgstr ""
+"Slug-a berria egun honetarako esklusiboki identifikatzen duen izen laburra da"
 
 #: models.py:34
-msgid "Publication date"
+#, fuzzy
+msgid "excerpt"
+msgstr "Zatia"
+
+#: models.py:35
+#, fuzzy
+msgid "content"
+msgstr "Edukia"
+
+#: models.py:37
+#, fuzzy
+msgid "published"
+msgstr "Argitaratuta"
+
+#: models.py:39
+#, fuzzy
+msgid "publication date"
 msgstr "Argitalpen data"
 
-#: models.py:42
-msgid "Link"
-msgstr "Esteka"
+#: models.py:48
+msgid "link"
+msgstr ""
 
-#: models.py:43
+#: models.py:49
+#, fuzzy
 msgid ""
 "This link will be used a absolute url for this item and replaces the view "
-"logic. <br />Note that by default this only applies for items with an empty "
+"logic. <br />Note that by default this only applies for items with  an empty "
 "\"content\" field."
 msgstr ""
 "Esteka hau elementu honen url absolutu gezala erabiliko da eta defektuzko "
 "ikuspegia gainidatziko du. <br />Ohartu defektuz hau edukirik ez dagoenean "
 "bakarrik aplikatzen dela."
 
-#: models.py:49 models.py:50
-msgid "News"
-msgstr "Berriak"
+#: models.py:56 models.py:57
+msgid "news"
+msgstr ""
 
-#: models.py:70
-msgid "Number of news items to show"
+#: models.py:77
+msgid "image"
+msgstr ""
+
+#: models.py:78
+msgid "images"
+msgstr ""
+
+#: models.py:88
+#, fuzzy
+msgid "number of news items to show"
 msgstr "Erakutsiko diren berri kopurua"
 
-#: models.py:71
+#: models.py:89
 msgid "Limits the number of items that will be displayed"
 msgstr "Ikusiko diren berrien kopurua mugatzen du"
 
-#: settings.py:18
+#: settings.py:26
 msgid "News feed"
 msgstr "Berrien jarioa"
 
-#: settings.py:19
+#: settings.py:30
 msgid "A feed full of news"
 msgstr "Berriz betetako jarioa"
 
@@ -118,6 +134,15 @@ msgstr "Berriz betetako jarioa"
 msgid "No news yet"
 msgstr "Berririk ez oraingoz"
 
-#: templates/cmsplugin_newsplus/latest_news.html:17
+#: templates/cmsplugin_newsplus/latest_news.html:19
 msgid "Archive"
 msgstr "Artxiboa"
+
+#~ msgid "Slug"
+#~ msgstr "Slug"
+
+#~ msgid "Link"
+#~ msgstr "Esteka"
+
+#~ msgid "News"
+#~ msgstr "Berriak"

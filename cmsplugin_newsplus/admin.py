@@ -8,12 +8,10 @@ from cmsplugin_newsplus.models import News, NewsImage
 
 class NewsImageInline(admin.TabularInline):
     model = NewsImage
-
+    extra = 0
 
 class NewsAdmin(admin.ModelAdmin):
-    """
-        Admin for news
-    """
+    """ Admin for news """
     date_hierarchy = 'pub_date'
     list_display = ('slug', 'title', 'is_published', 'pub_date')
     # list_editable = ('title', 'is_published')

@@ -6,7 +6,7 @@
       <ul>
         {% for news in latest %}
           <li>
-            <a href="{{ news.get_absolute_url }}">{{ news.title }}</a>
+            <a href="#">{{ news.title }}</a>
             <span class="pub_date">{{ news.pub_date|date:"DATE_FORMAT" }}</span>
           </li>
         {% endfor %}
@@ -15,7 +15,7 @@
       <p class="empty">{% trans "No news yet" %}</p>
     {% endif %}
 
-    {% url "news_archive_indes" as news_archive_url %}
+    {% url "news_archive_index" as news_archive_url %}
     <a href="{{ news_archive_url|default:'/' }}">{% trans "Archive" %}</a>
   </div>
 </div>

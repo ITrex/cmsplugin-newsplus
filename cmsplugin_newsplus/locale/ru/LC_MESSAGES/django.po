@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-09 04:23+0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2014-07-26 10:48-0500\n"
+"PO-Revision-Date: 2014-07-26 19:48+0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,25 +19,25 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: admin.py:37
+#: admin.py:42
 #, python-format
 msgid "%(count)d newsitem was published"
 msgid_plural "%(count)d newsitems were published"
 msgstr[0] "%(count)d новость была опубликовано"
 msgstr[1] "%(count)d новости было опубликовано"
 
-#: admin.py:40
+#: admin.py:45
 msgid "Publish selected news"
 msgstr "Опубликовать выбранные новости"
 
-#: admin.py:47
+#: admin.py:53
 #, python-format
 msgid "%(count)d newsitem was unpublished"
 msgid_plural "%(count)d newsitems were unpublished"
 msgstr[0] "%(count)d новость отменена публикация"
 msgstr[1] "%(count)d новости отменена публикация"
 
-#: admin.py:50
+#: admin.py:56
 msgid "Unpublish selected news"
 msgstr "Отменить публикацию выбранных новостей"
 
@@ -53,65 +53,84 @@ msgstr "Последние новости"
 msgid "News menu"
 msgstr "Меню новостей"
 
-#: models.py:27
-msgid "Title"
-msgstr "Заголовок"
-
-#: models.py:28
-msgid "Slug"
-msgstr "Путь"
-
 #: models.py:29
-msgid ""
-"A slug is a short name which uniquely identifies the news item for this day"
-msgstr "Короткое имя, используемое в URL, уникально идентифицирующее новость в пределах одного дня"
+#, fuzzy
+msgid "title"
+msgstr "заголовок"
 
 #: models.py:30
-msgid "Excerpt"
-msgstr "Выдержка"
+msgid "slug"
+msgstr "короткое имя"
 
 #: models.py:31
-msgid "Content"
-msgstr "Содержимое"
-
-#: models.py:33
-msgid "Published"
-msgstr "Опубликовано"
+msgid ""
+"A slug is a short name which uniquely identifies the news item for this day"
+msgstr ""
+"Короткое имя, используемое в URL, уникально идентифицирующее новость в "
+"пределах одного дня"
 
 #: models.py:34
-msgid "Publication date"
-msgstr "Дата публикации"
+#, fuzzy
+msgid "excerpt"
+msgstr "выдержка"
 
-#: models.py:42
-msgid "Link"
-msgstr "Ссылка"
+#: models.py:35
+#, fuzzy
+msgid "content"
+msgstr "содержимое"
 
-#: models.py:43
+#: models.py:37
+#, fuzzy
+msgid "published"
+msgstr "опубликовано"
+
+#: models.py:39
+#, fuzzy
+msgid "publication date"
+msgstr "дата публикации"
+
+#: models.py:48
+msgid "link"
+msgstr "ссылка"
+
+#: models.py:49
+#, fuzzy
 msgid ""
 "This link will be used a absolute url for this item and replaces the view "
-"logic. <br />Note that by default this only applies for items with an empty "
+"logic. <br />Note that by default this only applies for items with  an empty "
 "\"content\" field."
 msgstr ""
-"Абсолютный адрес (начинающийся с http). Эта ссылка будет использованна взамен отображения содержимого новости."
-"<br />Обратите внимание, что по умолчанию это относится только к новости с незаполненным полем \"содержимое\"."
+"Абсолютный адрес (начинающийся с http). Эта ссылка будет использованна "
+"взамен отображения содержимого новости.<br />Обратите внимание, что по "
+"умолчанию это относится только к новости с незаполненным полем \"содержимое"
+"\"."
 
-#: models.py:49 models.py:50
-msgid "News"
-msgstr "Новости"
+#: models.py:56 models.py:57
+msgid "news"
+msgstr "новости"
 
-#: models.py:70
-msgid "Number of news items to show"
-msgstr "Количество новостей к показу"
+#: models.py:77
+msgid "image"
+msgstr "изображение"
 
-#: models.py:71
+#: models.py:78
+msgid "images"
+msgstr "изображения"
+
+#: models.py:88
+#, fuzzy
+msgid "number of news items to show"
+msgstr "количество новостей к показу"
+
+#: models.py:89
 msgid "Limits the number of items that will be displayed"
 msgstr "Ограничить количество отображаемых новостей"
 
-#: settings.py:18
+#: settings.py:26
 msgid "News feed"
 msgstr "Новостная лента"
 
-#: settings.py:19
+#: settings.py:30
 msgid "A feed full of news"
 msgstr "Новостная лента полная новостей"
 
@@ -119,6 +138,15 @@ msgstr "Новостная лента полная новостей"
 msgid "No news yet"
 msgstr "Новостей нет"
 
-#: templates/cmsplugin_newsplus/latest_news.html:17
+#: templates/cmsplugin_newsplus/latest_news.html:19
 msgid "Archive"
 msgstr "Архив"
+
+#~ msgid "Slug"
+#~ msgstr "Путь"
+
+#~ msgid "Link"
+#~ msgstr "Ссылка"
+
+#~ msgid "News"
+#~ msgstr "Новости"

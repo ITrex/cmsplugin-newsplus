@@ -26,17 +26,17 @@ class News(models.Model):
     News
     """
 
-    title = models.CharField(_('Title'), max_length=255)
-    slug = models.SlugField(_('Slug'), unique_for_date='pub_date',
+    title = models.CharField(_('title'), max_length=255)
+    slug = models.SlugField(_('slug'), unique_for_date='pub_date',
                             help_text=_('A slug is a short name which uniquely'
                                         ' identifies the news item for this'
                                         ' day'))
-    excerpt = models.TextField(_('Excerpt'), blank=True)
-    content = models.TextField(_('Content'), blank=True)
+    excerpt = models.TextField(_('excerpt'), blank=True)
+    content = models.TextField(_('content'), blank=True)
 
-    is_published = models.BooleanField(_('Published'), default=False)
+    is_published = models.BooleanField(_('published'), default=False)
     pub_date = models.DateTimeField(
-        _('Publication date'),
+        _('publication date'),
         default=datetime.datetime.utcnow().replace(tzinfo=utc))
 
     created = models.DateTimeField(auto_now_add=True, editable=False)
@@ -45,7 +45,7 @@ class News(models.Model):
     published = PublishedNewsManager()
     objects = models.Manager()
 
-    link = models.URLField(_('Link'), blank=True, null=True,
+    link = models.URLField(_('link'), blank=True, null=True,
                            help_text=_('This link will be used a absolute url'
                                        ' for this item and replaces the view'
                                        ' logic. <br />Note that by default'
@@ -53,8 +53,8 @@ class News(models.Model):
                                        ' an empty "content" field.'))
 
     class Meta:
-        verbose_name = _('News')
-        verbose_name_plural = _('News')
+        verbose_name = _('news')
+        verbose_name_plural = _('news')
         ordering = ('-pub_date', )
 
     def __unicode__(self):
@@ -72,15 +72,23 @@ class News(models.Model):
 
 
 class NewsImage(models.Model):
+
+    class Meta:
+        verbose_name = _('image')
+        verbose_name_plural = _('images')
+
     news = models.ForeignKey(News, related_name='images')
     image = models.ImageField(upload_to="news_images")
+
+    def __unicode__(self):
+        return self.image.url
 
 
 class LatestNewsPlugin(CMSPlugin):
     """
         Model for the settings when using the latest news cms plugin
     """
-    limit = models.PositiveIntegerField(_('Number of news items to show'),
+    limit = models.PositiveIntegerField(_('number of news items to show'),
                                         help_text=_('Limits the number of '
                                                     'items that will be '
                                                     'displayed'))
