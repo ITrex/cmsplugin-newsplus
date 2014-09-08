@@ -34,7 +34,7 @@ class News(models.Model):
     excerpt = models.TextField(_('excerpt'), blank=True)
     content = models.TextField(_('content'), blank=True)
 
-    is_published = models.BooleanField(_('published'), default=False)
+    is_published = models.BooleanField(_('published'), default=True)
     pub_date = models.DateTimeField(
         _('publication date'),
         default=datetime.datetime.utcnow().replace(tzinfo=utc))
@@ -42,15 +42,13 @@ class News(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True, editable=False)
 
-    published = PublishedNewsManager()
-    objects = models.Manager()
-
-    link = models.URLField(_('link'), blank=True, null=True,
-                           help_text=_('This link will be used a absolute url'
-                                       ' for this item and replaces the view'
-                                       ' logic. <br />Note that by default'
-                                       ' this only applies for items with '
-                                       ' an empty "content" field.'))
+    link = models.URLField(
+        _('link'), blank=True, null=True,
+        help_text=_('This link will be used a absolute url'
+                    ' for this item and replaces the view'
+                    ' logic. <br />Note that by default'
+                    ' this only applies for items with '
+                    ' an empty "content" field.'))
 
     class Meta:
         verbose_name = _('news')
@@ -60,15 +58,6 @@ class News(models.Model):
     def __unicode__(self):
         return self.title
 
-    def get_absolute_url(self):
-        if settings.LINK_AS_ABSOLUTE_URL and self.link:
-            if settings.USE_LINK_ON_EMPTY_CONTENT_ONLY and not self.content:
-                return self.link
-        return reverse('news_detail',
-                       kwargs={'year': self.pub_date.strftime("%Y"),
-                               'month': self.pub_date.strftime("%m"),
-                               'day': self.pub_date.strftime("%d"),
-                               'slug': self.slug})
 
 
 class NewsImage(models.Model):

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-26 10:48-0500\n"
-"PO-Revision-Date: 2014-07-26 19:48+0400\n"
+"POT-Creation-Date: 2014-09-08 12:16+0400\n"
+"PO-Revision-Date: 2014-09-08 12:17+0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -72,7 +72,7 @@ msgstr ""
 #: models.py:34
 #, fuzzy
 msgid "excerpt"
-msgstr "выдержка"
+msgstr "анонс"
 
 #: models.py:35
 #, fuzzy
@@ -89,11 +89,11 @@ msgstr "опубликовано"
 msgid "publication date"
 msgstr "дата публикации"
 
-#: models.py:48
+#: models.py:46
 msgid "link"
 msgstr "ссылка"
 
-#: models.py:49
+#: models.py:47
 #, fuzzy
 msgid ""
 "This link will be used a absolute url for this item and replaces the view "
@@ -105,24 +105,24 @@ msgstr ""
 "умолчанию это относится только к новости с незаполненным полем \"содержимое"
 "\"."
 
-#: models.py:56 models.py:57
+#: models.py:54 models.py:55
 msgid "news"
 msgstr "новости"
 
-#: models.py:77
+#: models.py:66
 msgid "image"
 msgstr "изображение"
 
-#: models.py:78
+#: models.py:67
 msgid "images"
 msgstr "изображения"
 
-#: models.py:88
+#: models.py:80
 #, fuzzy
 msgid "number of news items to show"
 msgstr "количество новостей к показу"
 
-#: models.py:89
+#: models.py:81
 msgid "Limits the number of items that will be displayed"
 msgstr "Ограничить количество отображаемых новостей"
 
