@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-26 10:48-0500\n"
+"POT-Creation-Date: 2014-09-08 12:28+0400\n"
 "PO-Revision-Date: 2012-08-08 22:24+0200\n"
 "Last-Translator: Ales Zabala Alava (Shagi) <shagi@gisa-elkartea.org>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -16,6 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: __init__.py:6
+msgid "cmsplugin_newsplus"
+msgstr ""
+
+#: __init__.py:7
+msgid "Cmsplugin_Newsplus"
+msgstr ""
 
 #: admin.py:42
 #, python-format
@@ -51,37 +59,37 @@ msgstr "Azken berriak"
 msgid "News menu"
 msgstr "Berriak menua"
 
-#: models.py:29
+#: models.py:31
 #, fuzzy
 msgid "title"
 msgstr "Izenburua"
 
-#: models.py:30
+#: models.py:32
 msgid "slug"
 msgstr ""
 
-#: models.py:31
+#: models.py:33
 msgid ""
 "A slug is a short name which uniquely identifies the news item for this day"
 msgstr ""
 "Slug-a berria egun honetarako esklusiboki identifikatzen duen izen laburra da"
 
-#: models.py:34
+#: models.py:36
 #, fuzzy
 msgid "excerpt"
 msgstr "Zatia"
 
-#: models.py:35
+#: models.py:37
 #, fuzzy
 msgid "content"
 msgstr "Edukia"
 
-#: models.py:37
+#: models.py:39
 #, fuzzy
 msgid "published"
 msgstr "Argitaratuta"
 
-#: models.py:39
+#: models.py:41
 #, fuzzy
 msgid "publication date"
 msgstr "Argitalpen data"
@@ -105,20 +113,20 @@ msgstr ""
 msgid "news"
 msgstr ""
 
-#: models.py:77
+#: models.py:68
 msgid "image"
 msgstr ""
 
-#: models.py:78
+#: models.py:69
 msgid "images"
 msgstr ""
 
-#: models.py:88
+#: models.py:82
 #, fuzzy
 msgid "number of news items to show"
 msgstr "Erakutsiko diren berri kopurua"
 
-#: models.py:89
+#: models.py:83
 msgid "Limits the number of items that will be displayed"
 msgstr "Ikusiko diren berrien kopurua mugatzen du"
 

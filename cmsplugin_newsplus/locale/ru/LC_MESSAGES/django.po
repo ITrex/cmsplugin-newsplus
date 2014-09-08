@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-08 12:16+0400\n"
-"PO-Revision-Date: 2014-09-08 12:17+0400\n"
+"POT-Creation-Date: 2014-09-08 12:28+0400\n"
+"PO-Revision-Date: 2014-09-08 12:29+0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,6 +18,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: __init__.py:6
+msgid "cmsplugin_newsplus"
+msgstr "новости"
+
+#: __init__.py:7
+msgid "Cmsplugin_Newsplus"
+msgstr "Новости"
 
 #: admin.py:42
 #, python-format
@@ -53,47 +61,47 @@ msgstr "Последние новости"
 msgid "News menu"
 msgstr "Меню новостей"
 
-#: models.py:29
+#: models.py:31
 #, fuzzy
 msgid "title"
 msgstr "заголовок"
 
-#: models.py:30
+#: models.py:32
 msgid "slug"
 msgstr "короткое имя"
 
-#: models.py:31
+#: models.py:33
 msgid ""
 "A slug is a short name which uniquely identifies the news item for this day"
 msgstr ""
 "Короткое имя, используемое в URL, уникально идентифицирующее новость в "
 "пределах одного дня"
 
-#: models.py:34
+#: models.py:36
 #, fuzzy
 msgid "excerpt"
 msgstr "анонс"
 
-#: models.py:35
+#: models.py:37
 #, fuzzy
 msgid "content"
 msgstr "содержимое"
 
-#: models.py:37
+#: models.py:39
 #, fuzzy
 msgid "published"
 msgstr "опубликовано"
 
-#: models.py:39
+#: models.py:41
 #, fuzzy
 msgid "publication date"
 msgstr "дата публикации"
 
-#: models.py:46
+#: models.py:48
 msgid "link"
 msgstr "ссылка"
 
-#: models.py:47
+#: models.py:49
 #, fuzzy
 msgid ""
 "This link will be used a absolute url for this item and replaces the view "
@@ -105,24 +113,24 @@ msgstr ""
 "умолчанию это относится только к новости с незаполненным полем \"содержимое"
 "\"."
 
-#: models.py:54 models.py:55
+#: models.py:56 models.py:57
 msgid "news"
 msgstr "новости"
 
-#: models.py:66
+#: models.py:68
 msgid "image"
 msgstr "изображение"
 
-#: models.py:67
+#: models.py:69
 msgid "images"
 msgstr "изображения"
 
-#: models.py:80
+#: models.py:82
 #, fuzzy
 msgid "number of news items to show"
 msgstr "количество новостей к показу"
 
-#: models.py:81
+#: models.py:83
 msgid "Limits the number of items that will be displayed"
 msgstr "Ограничить количество отображаемых новостей"
 

@@ -26,6 +26,8 @@ class News(models.Model):
     News
     """
 
+    published = PublishedNewsManager()
+
     title = models.CharField(_('title'), max_length=255)
     slug = models.SlugField(_('slug'), unique_for_date='pub_date',
                             help_text=_('A slug is a short name which uniquely'
