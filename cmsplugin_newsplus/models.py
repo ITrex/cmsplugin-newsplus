@@ -25,7 +25,7 @@ class News(models.Model):
     """
     News
     """
-
+    objects = models.Manager()
     published = PublishedNewsManager()
 
     title = models.CharField(_('title'), max_length=255)
