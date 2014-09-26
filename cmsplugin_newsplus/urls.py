@@ -3,7 +3,6 @@ from django.conf.urls import *
 from . import feeds
 from . import views
 
-
 urlpatterns = patterns(
     'django.views.generic.date_based',
     url(r'^$',
