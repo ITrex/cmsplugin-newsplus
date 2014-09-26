@@ -52,6 +52,17 @@ class News(models.Model):
                     ' this only applies for items with '
                     ' an empty "content" field.'))
 
+    def get_absolute_url(self):
+        if settings.LINK_AS_ABSOLUTE_URL and self.link:
+            if settings.USE_LINK_ON_EMPTY_CONTENT_ONLY and not self.content:
+                return self.link
+
+        return reverse('news_detail',
+                       kwargs={'year': self.pub_date.strftime("%Y"),
+                               'month': self.pub_date.strftime("%m"),
+                               'day': self.pub_date.strftime("%d"),
+                               'slug': self.slug})
+
     class Meta:
         verbose_name = _('news')
         verbose_name_plural = _('news')
@@ -59,7 +70,6 @@ class News(models.Model):
 
     def __unicode__(self):
         return self.title
-
 
 
 class NewsImage(models.Model):
