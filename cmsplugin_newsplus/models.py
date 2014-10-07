@@ -72,11 +72,19 @@ class News(models.Model):
         return self.title
 
 
-class NewsImage(models.Model):
+class ImgOrImgDefaultManager(models.Manager):
+    def get_query_set(self, *args, **kwargs):
+        query_set = super(ImgOrImgDefaultManager, self). get_query_set(*args, **kwargs)
+        print 'exist' if query_set.image is None else 'not exist'
+        return query_set
 
+
+class NewsImage(models.Model):
     class Meta:
         verbose_name = _('image')
         verbose_name_plural = _('images')
+
+    objects = ImgOrImgDefaultManager()
 
     news = models.ForeignKey(News, related_name='images')
     image = models.ImageField(upload_to="news_images")
@@ -93,3 +101,4 @@ class LatestNewsPlugin(CMSPlugin):
                                         help_text=_('Limits the number of '
                                                     'items that will be '
                                                     'displayed'))
+    default_img = models.ImageField(upload_to="news_images")
