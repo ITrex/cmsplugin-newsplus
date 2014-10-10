@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-08 12:28+0400\n"
-"PO-Revision-Date: 2014-09-08 12:29+0400\n"
+"POT-Creation-Date: 2014-10-10 17:32+0400\n"
+"PO-Revision-Date: 2014-10-10 17:33+0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -27,25 +27,25 @@ msgstr "новости"
 msgid "Cmsplugin_Newsplus"
 msgstr "Новости"
 
-#: admin.py:42
+#: admin.py:47
 #, python-format
 msgid "%(count)d newsitem was published"
 msgid_plural "%(count)d newsitems were published"
 msgstr[0] "%(count)d новость была опубликовано"
 msgstr[1] "%(count)d новости было опубликовано"
 
-#: admin.py:45
+#: admin.py:50
 msgid "Publish selected news"
 msgstr "Опубликовать выбранные новости"
 
-#: admin.py:53
+#: admin.py:59
 #, python-format
 msgid "%(count)d newsitem was unpublished"
 msgid_plural "%(count)d newsitems were unpublished"
 msgstr[0] "%(count)d новость отменена публикация"
 msgstr[1] "%(count)d новости отменена публикация"
 
-#: admin.py:56
+#: admin.py:62
 msgid "Unpublish selected news"
 msgstr "Отменить публикацию выбранных новостей"
 
@@ -57,51 +57,61 @@ msgstr "Приложение новости"
 msgid "Latest news"
 msgstr "Последние новости"
 
-#: menu.py:14
+#: menu.py:18
 msgid "News menu"
 msgstr "Меню новостей"
 
-#: models.py:31
+#: models.py:26 models.py:48
 #, fuzzy
 msgid "title"
 msgstr "заголовок"
 
-#: models.py:32
+#: models.py:27 models.py:49
 msgid "slug"
 msgstr "короткое имя"
 
-#: models.py:33
+#: models.py:33 models.py:45
+msgid "topic"
+msgstr "тема"
+
+#: models.py:34
+#, fuzzy
+#| msgid "topic"
+msgid "topics"
+msgstr "темы"
+
+#: models.py:50
 msgid ""
 "A slug is a short name which uniquely identifies the news item for this day"
 msgstr ""
 "Короткое имя, используемое в URL, уникально идентифицирующее новость в "
 "пределах одного дня"
 
-#: models.py:36
+#: models.py:54
 #, fuzzy
 msgid "excerpt"
 msgstr "анонс"
 
-#: models.py:37
+#: models.py:55
 #, fuzzy
 msgid "content"
 msgstr "содержимое"
 
-#: models.py:39
+#: models.py:57
 #, fuzzy
 msgid "published"
 msgstr "опубликовано"
 
-#: models.py:41
+#: models.py:59
 #, fuzzy
 msgid "publication date"
 msgstr "дата публикации"
 
-#: models.py:48
+#: models.py:66
 msgid "link"
 msgstr "ссылка"
 
-#: models.py:49
+#: models.py:67
 #, fuzzy
 msgid ""
 "This link will be used a absolute url for this item and replaces the view "
@@ -113,24 +123,24 @@ msgstr ""
 "умолчанию это относится только к новости с незаполненным полем \"содержимое"
 "\"."
 
-#: models.py:56 models.py:57
+#: models.py:85 models.py:86
 msgid "news"
 msgstr "новости"
 
-#: models.py:68
+#: models.py:95
 msgid "image"
 msgstr "изображение"
 
-#: models.py:69
+#: models.py:96
 msgid "images"
 msgstr "изображения"
 
-#: models.py:82
+#: models.py:110
 #, fuzzy
 msgid "number of news items to show"
 msgstr "количество новостей к показу"
 
-#: models.py:83
+#: models.py:111
 msgid "Limits the number of items that will be displayed"
 msgstr "Ограничить количество отображаемых новостей"
 

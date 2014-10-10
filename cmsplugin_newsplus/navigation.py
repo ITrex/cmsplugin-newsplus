@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 def get_nodes(request):
-    logger.debug("Rebuilding news menu")
+
     res = []
 
     items = News.published.all()
@@ -26,10 +26,7 @@ def get_nodes(request):
 
         if date.year not in years_done:
             years_done.append(date.year)
-            year_node = NavigationNode(date.year,
-                                       reverse('news_archive_year',
-                                               kwargs=dict(year=date.year)),
-                                       'newsitem-year-%d' % (date.year,))
+            year_node =
             year_node.childrens = []
             months_done = []
             res.append(year_node)

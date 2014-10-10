@@ -45,6 +45,39 @@ class ArchiveIndexView(PublishedNewsMixin, generic_views.ListView):
         return self.get(*args, **kwargs)
 
 
+class TopicIndexView(generic_views.DetailView):
+    """
+    A simple archive view that exposes following context:
+
+    * latest
+    * date_list
+    * paginator
+    * page_obj
+    * object_list
+    * is_paginated
+
+    The first two are intended to mimic the behaviour of the
+    date_based.archive_index view while the latter ones are provided by
+    ListView.
+    """
+    paginate_by = settings.ARCHIVE_PAGE_SIZE
+    template_name = 'cmsplugin_newsplus/news_archive.html'
+    include_yearlist = True
+    date_field = 'pub_date'
+    model = models.Topic
+
+    def get_context_data(self, **kwargs):
+        context = super(TopicIndexView, self).get_context_data(**kwargs)
+
+        context['object_list'] = context['object'].news_set.filter(
+            is_published=True).all()
+
+        return context
+
+    def post(self, *args, **kwargs):
+        return self.get(*args, **kwargs)
+
+
 class DetailView(PublishedNewsMixin, generic_views.DateDetailView):
     month_format = '%m'
     date_field = 'pub_date'

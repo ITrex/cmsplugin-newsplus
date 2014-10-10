@@ -21,6 +21,19 @@ class PublishedNewsManager(models.Manager):
                 pub_date__lte=datetime.datetime.utcnow().replace(tzinfo=utc))
 
 
+class Topic(models.Model):
+    ''' Topic '''
+    title = models.CharField(_('title'), max_length=255)
+    slug = models.SlugField(_('slug'), unique=True, null=True, blank=True)
+
+    def __unicode__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _('topic')
+        verbose_name_plural = _('topics')
+
+
 class News(models.Model):
     """
     News
@@ -28,13 +41,18 @@ class News(models.Model):
     objects = models.Manager()
     published = PublishedNewsManager()
 
+    topic = models.ForeignKey(
+        Topic, verbose_name=_('topic'),
+        null=False, default=1)
+
     title = models.CharField(_('title'), max_length=255)
     slug = models.SlugField(_('slug'), unique_for_date='pub_date',
                             help_text=_('A slug is a short name which uniquely'
                                         ' identifies the news item for this'
                                         ' day'))
-    excerpt = models.TextField(_('excerpt'), blank=True)
-    content = models.TextField(_('content'), blank=True)
+
+    excerpt = models.TextField(verbose_name=_('excerpt'), blank=True)
+    content = models.TextField(verbose_name=_('content'), blank=True)
 
     is_published = models.BooleanField(_('published'), default=True)
     pub_date = models.DateTimeField(
@@ -88,8 +106,9 @@ class LatestNewsPlugin(CMSPlugin):
     """
         Model for the settings when using the latest news cms plugin
     """
-    limit = models.PositiveIntegerField(_('number of news items to show'),
-                                        help_text=_('Limits the number of '
-                                                    'items that will be '
-                                                    'displayed'))
+    limit = models.PositiveIntegerField(
+        _('number of news items to show'),
+        help_text=_('Limits the number of '
+                    'items that will be '
+                    'displayed'))
     default_img = models.ImageField(upload_to="news_images")
