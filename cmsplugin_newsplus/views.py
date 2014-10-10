@@ -52,6 +52,11 @@ class DetailView(PublishedNewsMixin, generic_views.DateDetailView):
     def post(self, *args, **kwargs):
         return self.get(*args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        context['all_news'] = models.News.objects.order_by('pub_date')
+        return context
+
 
 class MonthArchiveView(PublishedNewsMixin, generic_views.MonthArchiveView):
     month_format = '%m'
