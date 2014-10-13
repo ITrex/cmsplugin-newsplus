@@ -3,7 +3,7 @@
 
 from django.views.generic.detail import DetailView
 from django.views import generic as generic_views
-
+from django.shortcuts import get_object_or_404
 from cmsplugin_newsplus import models
 from cmsplugin_newsplus import settings
 
@@ -80,7 +80,9 @@ class TopicIndexView(DetailView):
         context['add_placeholder'] = models.News(pk=0)
 
         try:
-            context['topic'] = self.kwargs['topic']
+            topic_slug = self.kwargs['topic']
+            topic = get_object_or_404(models.Topic, slug=topic_slug)
+            context['topic'] = topic
         except KeyError:
             pass
 
@@ -96,14 +98,19 @@ class TopicDetailView(PublishedNewsMixin, generic_views.DateDetailView):
 
     def get_queryset(self):
         queryset = super(TopicDetailView, self).get_queryset()
-        topic = self.kwargs['topic']
 
-        return queryset.filter(topic__slug=topic)
+        topic_slug = self.kwargs['topic']
+        topic = get_object_or_404(models.Topic, slug=topic_slug)
+
+        return queryset.filter(topic=topic)
 
     def get_context_data(self, **kwargs):
         context = super(TopicDetailView, self).get_context_data(**kwargs)
-
         context['add_placeholder'] = models.News(pk=0)
+
+        context['all_news'] = models.News.objects.order_by('pub_date')[:10]
+
+        return context
 
 
 class DetailView(PublishedNewsMixin, generic_views.DateDetailView):
@@ -115,7 +122,8 @@ class DetailView(PublishedNewsMixin, generic_views.DateDetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
-        context['all_news'] = models.News.objects.order_by('pub_date')
+        context['all_news'] = models.News.objects.order_by('pub_date')[:10]
+        context['add_placeholder'] = models.News(pk=0)
         return context
 
 
