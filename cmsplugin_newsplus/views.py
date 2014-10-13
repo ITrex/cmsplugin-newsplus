@@ -43,6 +43,9 @@ class ArchiveIndexView(PublishedNewsMixin, generic_views.ListView):
         if self.include_yearlist:
             date_list = self.get_queryset().datetimes('pub_date', 'year')[::-1]
             context['date_list'] = date_list
+
+        context['add_placeholder'] = models.News(pk=0)
+
         return context
 
     def post(self, *args, **kwargs):
