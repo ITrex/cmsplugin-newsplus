@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 from django.views import generic as generic_views
 from django.shortcuts import get_object_or_404
 from cmsplugin_newsplus import models
@@ -52,7 +53,7 @@ class ArchiveIndexView(PublishedNewsMixin, generic_views.ListView):
         return self.get(*args, **kwargs)
 
 
-class TopicIndexView(DetailView):
+class TopicIndexView(PublishedNewsMixin, ListView):
     """
     A simple archive view that exposes following context:
 
@@ -67,18 +68,26 @@ class TopicIndexView(DetailView):
     date_based.archive_index view while the latter ones are provided by
     ListView.
     """
+
     paginate_by = settings.ARCHIVE_PAGE_SIZE
     template_name = 'cmsplugin_newsplus/news_archive.html'
     date_field = 'pub_date'
-    slug_field = 'slug'
-    slug_url_kwarg = 'topic'
-    model = models.Topic
+    model = models.News
+
+    def get_queryset(self):
+        result = super(TopicIndexView, self).get_queryset()
+
+        try:
+            topic_slug = self.kwargs['topic']
+            topic = get_object_or_404(models.Topic, slug=topic_slug)
+            result = result.filter(topic=topic)
+        except KeyError:
+            pass
+
+        return result
 
     def get_context_data(self, **kwargs):
         context = super(TopicIndexView, self).get_context_data(**kwargs)
-
-        context['object_list'] = context['object'].news_set.filter(
-            is_published=True).all()
 
         context['add_placeholder'] = models.News(pk=0)
 
