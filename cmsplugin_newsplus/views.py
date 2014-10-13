@@ -101,7 +101,7 @@ class TopicDetailView(PublishedNewsMixin, generic_views.DateDetailView):
         return queryset.filter(topic__slug=topic)
 
     def get_context_data(self, **kwargs):
-        context = super(TopicIndexView, self).get_context_data(**kwargs)
+        context = super(TopicDetailView, self).get_context_data(**kwargs)
 
         context['add_placeholder'] = models.News(pk=0)
 
