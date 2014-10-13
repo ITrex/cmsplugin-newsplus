@@ -1,7 +1,11 @@
+#!/bin/env python
+# -*- coding: utf-8 -*-
+
+from django.views.generic.detail import DetailView
 from django.views import generic as generic_views
 
-from . import models
-from . import settings
+from cmsplugin_newsplus import models
+from cmsplugin_newsplus import settings
 
 
 class PublishedNewsMixin(object):
@@ -45,7 +49,7 @@ class ArchiveIndexView(PublishedNewsMixin, generic_views.ListView):
         return self.get(*args, **kwargs)
 
 
-class TopicIndexView(generic_views.DetailView):
+class TopicIndexView(DetailView):
     """
     A simple archive view that exposes following context:
 
@@ -62,8 +66,9 @@ class TopicIndexView(generic_views.DetailView):
     """
     paginate_by = settings.ARCHIVE_PAGE_SIZE
     template_name = 'cmsplugin_newsplus/news_archive.html'
-    include_yearlist = True
     date_field = 'pub_date'
+    slug_field = 'slug'
+    slug_url_kwarg = 'topic'
     model = models.Topic
 
     def get_context_data(self, **kwargs):
@@ -72,10 +77,33 @@ class TopicIndexView(generic_views.DetailView):
         context['object_list'] = context['object'].news_set.filter(
             is_published=True).all()
 
+        context['add_placeholder'] = models.News(pk=0)
+
+        try:
+            context['topic'] = self.kwargs['topic']
+        except KeyError:
+            pass
+
         return context
 
     def post(self, *args, **kwargs):
         return self.get(*args, **kwargs)
+
+
+class TopicDetailView(PublishedNewsMixin, generic_views.DateDetailView):
+    month_format = '%m'
+    date_field = 'pub_date'
+
+    def get_queryset(self):
+        queryset = super(TopicDetailView, self).get_queryset()
+        topic = self.kwargs['topic']
+
+        return queryset.filter(topic__slug=topic)
+
+    def get_context_data(self, **kwargs):
+        context = super(TopicIndexView, self).get_context_data(**kwargs)
+
+        context['add_placeholder'] = models.News(pk=0)
 
 
 class DetailView(PublishedNewsMixin, generic_views.DateDetailView):

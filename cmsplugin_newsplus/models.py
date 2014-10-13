@@ -75,11 +75,23 @@ class News(models.Model):
             if settings.USE_LINK_ON_EMPTY_CONTENT_ONLY and not self.content:
                 return self.link
 
-        return reverse('news_detail',
-                       kwargs={'year': self.pub_date.strftime("%Y"),
-                               'month': self.pub_date.strftime("%m"),
-                               'day': self.pub_date.strftime("%d"),
-                               'slug': self.slug})
+        # if this is default topic - do not specify topic argument in url
+        if self.topic.id == 1:
+            return reverse(
+                'news_detail',
+                kwargs={'year': self.pub_date.strftime("%Y"),
+                        'month': self.pub_date.strftime("%m"),
+                        'day': self.pub_date.strftime("%d"),
+                        'slug': self.slug})
+        else:
+            return reverse(
+                'news_detail_by_topic',
+                kwargs={
+                    'topic': self.topic.slug,
+                    'year': self.pub_date.strftime("%Y"),
+                    'month': self.pub_date.strftime("%m"),
+                    'day': self.pub_date.strftime("%d"),
+                    'slug': self.slug})
 
     class Meta:
         verbose_name = _('news')

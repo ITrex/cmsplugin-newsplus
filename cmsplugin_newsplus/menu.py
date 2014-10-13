@@ -7,12 +7,14 @@ hierarchy for every news item.
 """
 
 from django.utils.translation import ugettext_lazy as _
-from cmsplugin_newsplus.models import Topic
+from cmsplugin_newsplus.models import Topic, News
 from menus.menu_pool import menu_pool
 from cms.menu_bases import CMSAttachMenu
 from menus.base import NavigationNode
 from django.core.urlresolvers import reverse
-
+from menus.base import Modifier
+from django.shortcuts import get_object_or_404
+from datetime import datetime
 
 class NewsItemMenu(CMSAttachMenu):
     name = _("News menu")
@@ -24,7 +26,7 @@ class NewsItemMenu(CMSAttachMenu):
                 topic.title,
                 reverse(
                     'news_archive_by_topic',
-                    kwargs={'slug': topic.slug}),
+                    kwargs={'topic': topic.slug}),
                 'newsitem-topic-{}'.format(topic.slug)))
 
         return result
