@@ -19,11 +19,18 @@ class CMSLatestNewsPlugin(CMSPluginBase):
         """
             Render the latest news
         """
-        latest = News.objects.all()[:instance.limit]
+        latest = News.published.all()
+
+        if instance.topic:
+            latest = latest.filter(topic=instance.topic)
+
+        latest = latest[:instance.limit]
+
         context.update({
             'instance': instance,
             'latest': latest,
             'placeholder': placeholder,
+            'add_placeholder': News(pk=0)
         })
         return context
 

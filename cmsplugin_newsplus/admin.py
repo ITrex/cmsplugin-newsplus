@@ -12,9 +12,11 @@ class NewsImageInline(admin.TabularInline):
     model = NewsImage
     extra = 0
 
+
 class TopicAdmin(admin.ModelAdmin):
     model = Topic
     prepopulated_fields = {'slug': ('title',)}
+
 
 class NewsAdmin(admin.ModelAdmin):
     """ Admin for news """

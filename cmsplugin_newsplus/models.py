@@ -1,3 +1,6 @@
+#!/bin/env python
+# -*- coding: utf-8 -*-
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
@@ -30,8 +33,8 @@ class Topic(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = _('topic')
-        verbose_name_plural = _('topics')
+        verbose_name = _(u'тема')
+        verbose_name_plural = _(u'темы')
 
 
 class News(models.Model):
@@ -51,8 +54,8 @@ class News(models.Model):
                                         ' identifies the news item for this'
                                         ' day'))
 
-    excerpt = models.TextField(verbose_name=_('excerpt'), blank=True)
-    content = models.TextField(verbose_name=_('content'), blank=True)
+    excerpt = models.TextField(verbose_name=_(u'анонс'), blank=True)
+    content = models.TextField(verbose_name=_(u'содержимое'), blank=True)
 
     is_published = models.BooleanField(_('published'), default=True)
     pub_date = models.DateTimeField(
@@ -62,19 +65,19 @@ class News(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True, editable=False)
 
-    link = models.URLField(
-        _('link'), blank=True, null=True,
-        help_text=_('This link will be used a absolute url'
-                    ' for this item and replaces the view'
-                    ' logic. <br />Note that by default'
-                    ' this only applies for items with '
-                    ' an empty "content" field.'))
+    author = models.CharField(
+        max_length=256, verbose_name=_(u'автор'),
+        blank=True, default="")
+
+    source_url = models.URLField(
+        max_length=512, verbose_name=_(u'URL источника'),
+        blank=True, default="")
+
+    source = models.CharField(
+        max_length=512, verbose_name=_(u'источник'),
+        blank=True, default="")
 
     def get_absolute_url(self):
-        if settings.LINK_AS_ABSOLUTE_URL and self.link:
-            if settings.USE_LINK_ON_EMPTY_CONTENT_ONLY and not self.content:
-                return self.link
-
         # if this is default topic - do not specify topic argument in url
         if self.topic.id == 1:
             return reverse(
@@ -119,8 +122,12 @@ class LatestNewsPlugin(CMSPlugin):
         Model for the settings when using the latest news cms plugin
     """
     limit = models.PositiveIntegerField(
-        _('number of news items to show'),
-        help_text=_('Limits the number of '
-                    'items that will be '
-                    'displayed'))
-    default_img = models.ImageField(upload_to="news_images")
+        _(u'количество последних новостей для отображения'))
+
+    default_img = models.ImageField(
+        verbose_name=_(u'изображение по умолчанию'),
+        upload_to="news_images", blank=True)
+
+    topic = models.ForeignKey(
+        Topic, verbose_name=_('topic'),
+        null=True, blank=True)
