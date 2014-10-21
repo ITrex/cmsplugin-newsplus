@@ -119,8 +119,9 @@ class TopicDetailView(PublishedNewsMixin, generic_views.DateDetailView):
     def get_context_data(self, **kwargs):
         context = super(TopicDetailView, self).get_context_data(**kwargs)
         context['add_placeholder'] = models.News(pk=0)
-
-        context['all_news'] = models.News.objects.order_by('pub_date')[:10]
+        context['topic_news'] = models.News.published.filter(
+            topic=self.get_object().topic).all()
+        context['all_news'] = models.News.published.order_by('pub_date')[:10]
 
         return context
 
@@ -134,8 +135,11 @@ class DetailView(PublishedNewsMixin, generic_views.DateDetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
-        context['all_news'] = models.News.objects.order_by('pub_date')[:10]
+        context['all_news'] = models.News.published.order_by('pub_date')[:10]
+        context['topic_news'] = models.News.published.filter(
+            topic=self.get_object().topic).all()
         context['add_placeholder'] = models.News(pk=0)
+
         return context
 
 
